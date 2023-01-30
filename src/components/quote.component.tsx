@@ -15,7 +15,7 @@ export const Quote = (): JSX.Element => {
   const [imageNumber, setImageNumber] = useState<number | null>(null);
   useEffectOnce(() => {
     const getData = async () => {
-      const response = await axios.get(`/api/get-advice`);
+      const response = await axios.get(`/get-advice`);
       setQuote(response.data);
       setImageNumber(getRandomBetween(1, 105));
     };
