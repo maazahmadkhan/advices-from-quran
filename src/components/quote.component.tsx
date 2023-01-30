@@ -13,11 +13,16 @@ type Quote = Readonly<{
 export const Quote = (): JSX.Element => {
   const [quote, setQuote] = useState<null | Quote>(null);
   const [imageNumber, setImageNumber] = useState<number | null>(null);
+  const [error, setError] = useState<null | Error>(null);
   useEffectOnce(() => {
     const getData = async () => {
-      const response = await axios.get(`/get-advice`);
-      setQuote(response.data);
-      setImageNumber(getRandomBetween(1, 105));
+      try {
+        const response = await axios.get(`/get-advice`);
+        setQuote(response.data);
+        setImageNumber(getRandomBetween(1, 105));
+      } catch (e) {
+        setError(e as Error);
+      }
     };
     getData();
   });
@@ -32,7 +37,14 @@ export const Quote = (): JSX.Element => {
           : {}),
       }}
     >
-      {quote?.description ? (
+      {error ? (
+        <div className="quote-wrapper">
+          <div className="quote-description">
+            {"Seek forgiveness of Allah. He is forgiving and Merciful."}
+          </div>
+          <div className="quote-reference">{`Qur'an ${"Qur'an 73:20"}`}</div>
+        </div>
+      ) : quote?.description ? (
         <div className="quote-wrapper">
           <div className="quote-description">
             {quote?.description ||
