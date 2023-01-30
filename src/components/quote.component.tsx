@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useState } from "react";
 import { useEffectOnce } from "../app/hooks/use-effect-once";
-import Spinner from "react-spinner-material";
 import "./quote.css";
+import { getRandomBetween } from "../services/utils";
+import { imagesObject } from "../services/images.map";
+import loader from "../assets/images/loader.gif";
 type Quote = Readonly<{
   description: string;
   id: number;
@@ -10,19 +12,35 @@ type Quote = Readonly<{
 }>;
 export const Quote = (): JSX.Element => {
   const [quote, setQuote] = useState<null | Quote>(null);
+  const [imageNumber, setImageNumber] = useState<number | null>(null);
   useEffectOnce(() => {
     const getData = async () => {
       const response = await axios.get(`/api/get-advice`);
       setQuote(response.data);
+      setImageNumber(getRandomBetween(1, 105));
     };
     getData();
   });
   return (
-    <div className="quote">
+    <div
+      className="quote"
+      style={{
+        ...(imageNumber
+          ? {
+              background: `url(${imagesObject[imageNumber]}) no-repeat center center fixed`,
+            }
+          : {}),
+      }}
+    >
       {quote?.description ? (
-        <div className="quote-description">{quote?.description || ""}</div>
+        <div className="quote-wrapper">
+          <div className="quote-description">{quote?.description || ""}</div>
+          <div className="quote-reference">{`Qur'an ${quote?.reference}`}</div>
+        </div>
       ) : (
-        <Spinner className="quote-spinner" style={{ borderColor: "pink" }} />
+        <div className="quote-loader">
+          <img src={loader} alt="loader" height={"100px"} />
+        </div>
       )}
     </div>
   );
