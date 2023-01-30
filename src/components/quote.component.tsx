@@ -34,8 +34,13 @@ export const Quote = (): JSX.Element => {
     >
       {quote?.description ? (
         <div className="quote-wrapper">
-          <div className="quote-description">{quote?.description || ""}</div>
-          <div className="quote-reference">{`Qur'an ${quote?.reference}`}</div>
+          <div className="quote-description">
+            {quote?.description ||
+              "Seek forgiveness of Allah. He is forgiving and Merciful."}
+          </div>
+          <div className="quote-reference">{`Qur'an ${
+            quote?.reference || "Qur'an 73:20"
+          }`}</div>
         </div>
       ) : (
         <div className="quote-loader">
