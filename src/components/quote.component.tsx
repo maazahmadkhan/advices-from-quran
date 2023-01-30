@@ -21,6 +21,7 @@ export const Quote = (): JSX.Element => {
         setQuote(response.data);
         setImageNumber(getRandomBetween(1, 105));
       } catch (e) {
+        setImageNumber(getRandomBetween(1, 105));
         setError(e as Error);
       }
     };
