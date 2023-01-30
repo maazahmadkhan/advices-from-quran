@@ -1,0 +1,12 @@
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  font-family: "Dancing Script";
+  padding: 0;
+}
