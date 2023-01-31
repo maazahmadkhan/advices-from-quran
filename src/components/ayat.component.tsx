@@ -72,7 +72,9 @@ export const AyatComponent = (): JSX.Element => {
       ) : ayat?.text ? (
         <div className="ayat-wrapper">
           <div className="ayat-description">
-            {tooLong ? ayat.text.substring(0, maxChars) + "..." : ayat.text}
+            <div className="ayat-text">
+              {tooLong ? ayat.text.substring(0, maxChars) + "..." : ayat.text}
+            </div>
           </div>
           <div className="ayat-footer">
             <div className="ayat-reference" onClick={goToQuranCom}>
