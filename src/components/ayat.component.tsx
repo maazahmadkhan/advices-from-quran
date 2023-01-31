@@ -29,6 +29,16 @@ export const AyatComponent = (): JSX.Element => {
     };
     getData();
   });
+  const goToQuranCom = () => {
+    if (ayat?.surah) {
+      window.open(
+        `https://quran.com/${ayat.surah.number}?startingVerse=${ayat.numberInSurah}`
+      );
+    }
+  };
+  const refresh = () => {
+    window.location.reload();
+  };
   return (
     <div
       className="ayat"
@@ -45,10 +55,15 @@ export const AyatComponent = (): JSX.Element => {
           <div className="ayat-description">
             {"Seek forgiveness of Allah. He is forgiving and Merciful."}
           </div>
-          <div className="ayat-reference">
-            {ayat?.surah
-              ? `Qur'an ${ayat.surah.englishName} ${ayat.number}`
-              : "Qur'an 73:20"}
+          <div className="ayat-footer">
+            <div className="ayat-reference" onClick={goToQuranCom}>
+              {ayat?.surah
+                ? `Qur'an ${ayat.surah.englishName} ${ayat.numberInSurah}`
+                : "Qur'an Al-Muzzammil 20"}
+            </div>
+            <div className="ayat-next" onClick={refresh}>
+              Next
+            </div>
           </div>
         </div>
       ) : ayat?.text ? (
@@ -57,10 +72,15 @@ export const AyatComponent = (): JSX.Element => {
             {ayat?.text ||
               "Seek forgiveness of Allah. He is forgiving and Merciful."}
           </div>
-          <div className="ayat-reference">
-            {ayat?.surah
-              ? `Qur'an ${ayat.surah.englishName} ${ayat.number}`
-              : "Qur'an 73:20"}
+          <div className="ayat-footer">
+            <div className="ayat-reference" onClick={goToQuranCom}>
+              {ayat?.surah
+                ? `Qur'an ${ayat.surah.englishName} ${ayat.numberInSurah}`
+                : "Qur'an Al-Muzzammil 20"}
+            </div>
+            <div className="ayat-next" onClick={refresh}>
+              Next
+            </div>
           </div>
         </div>
       ) : (
