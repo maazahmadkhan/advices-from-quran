@@ -7,7 +7,7 @@ import { imagesObject } from "../services/images.map";
 import loader from "../assets/images/loader.gif";
 import { Ayat } from "./ayat.types";
 
-const maxChars = 180;
+const maxChars = 160;
 export const AyatComponent = (): JSX.Element => {
   const [ayat, setAyat] = useState<null | Ayat>(null);
   const [imageNumber, setImageNumber] = useState<number | null>(null);
