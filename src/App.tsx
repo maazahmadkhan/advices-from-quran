@@ -1,4 +1,4 @@
-import { AyatComponent } from "./components/ayat.component";
+import { AyatComponent } from "./components/ayat/ayat.component";
 import "./App.css";
 import { useEffectOnce } from "./app/hooks/use-effect-once";
 export const App = () => {

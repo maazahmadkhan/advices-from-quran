@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useState } from "react";
-import { useEffectOnce } from "../app/hooks/use-effect-once";
+import { useEffectOnce } from "../../app/hooks/use-effect-once";
 import "./ayat.css";
-import { getRandomBetween } from "../services/utils";
-import { imagesObject } from "../services/images.map";
-import loader from "../assets/images/loader.gif";
-import { Ayat } from "./ayat.types";
+import { getRandomBetween } from "../../services/utils";
+import { imagesObject } from "../../services/images.map";
+import loader from "../../assets/images/loader.gif";
+import { Ayat } from "../ayat.types";
 
 const maxChars = 160;
 export const AyatComponent = (): JSX.Element => {
