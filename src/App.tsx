@@ -5,7 +5,7 @@ export const App = () => {
   useEffectOnce(() => {
     setInterval(() => {
       window.location.reload();
-    }, 15000);
+    }, 30000);
   });
   return <AyatComponent />;
 };
