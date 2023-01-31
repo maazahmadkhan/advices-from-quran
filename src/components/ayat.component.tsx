@@ -47,7 +47,7 @@ export const AyatComponent = (): JSX.Element => {
           </div>
           <div className="ayat-reference">
             {ayat?.surah
-              ? `Qur'an ${ayat.surah.englishName} ${ayat.surah.number}`
+              ? `Qur'an ${ayat.surah.englishName} ${ayat.number}`
               : "Qur'an 73:20"}
           </div>
         </div>
@@ -59,7 +59,7 @@ export const AyatComponent = (): JSX.Element => {
           </div>
           <div className="ayat-reference">
             {ayat?.surah
-              ? `Qur'an ${ayat.surah.englishName} ${ayat.surah.number}`
+              ? `Qur'an ${ayat.surah.englishName} ${ayat.number}`
               : "Qur'an 73:20"}
           </div>
         </div>
