@@ -7,6 +7,7 @@ import { imagesObject } from "../services/images.map";
 import loader from "../assets/images/loader.gif";
 import { Ayat } from "./ayat.types";
 
+const maxChars = 180;
 export const AyatComponent = (): JSX.Element => {
   const [ayat, setAyat] = useState<null | Ayat>(null);
   const [imageNumber, setImageNumber] = useState<number | null>(null);
@@ -39,6 +40,7 @@ export const AyatComponent = (): JSX.Element => {
   const refresh = () => {
     window.location.reload();
   };
+  const tooLong = (ayat?.text?.length || 0) > maxChars;
   return (
     <div
       className="ayat"
@@ -46,6 +48,7 @@ export const AyatComponent = (): JSX.Element => {
         ...(imageNumber
           ? {
               background: `url(${imagesObject[imageNumber]}) no-repeat center center fixed`,
+              backgroundSize: "cover",
             }
           : {}),
       }}
@@ -69,8 +72,7 @@ export const AyatComponent = (): JSX.Element => {
       ) : ayat?.text ? (
         <div className="ayat-wrapper">
           <div className="ayat-description">
-            {ayat?.text ||
-              "Seek forgiveness of Allah. He is forgiving and Merciful."}
+            {tooLong ? ayat.text.substring(0, maxChars) + "..." : ayat.text}
           </div>
           <div className="ayat-footer">
             <div className="ayat-reference" onClick={goToQuranCom}>
